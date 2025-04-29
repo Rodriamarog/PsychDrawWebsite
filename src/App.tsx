@@ -77,11 +77,11 @@ function HomePage() {
                 {/* Carousel Container */}
                 <div className="w-full aspect-[4/3] bg-gradient-to-br from-purple-100 to-indigo-50 rounded-lg mb-4 relative group">
                   {/* Image */}
-                  <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="absolute inset-0 flex items-center justify-center overflow-hidden rounded-lg">
                     <img
                       src={carouselImages[currentImageIndex]} // Use state for src
                       alt={`PsychDraw analysis example ${currentImageIndex + 1}`} // Dynamic alt text
-                      className="object-contain h-full w-auto p-4 transition-opacity duration-300 ease-in-out"
+                      className="object-cover h-full w-full transition-opacity duration-300 ease-in-out"
                       key={currentImageIndex} // Add key for transitions
                     />
                   </div>
