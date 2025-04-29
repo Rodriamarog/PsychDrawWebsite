@@ -17,8 +17,13 @@ import { Routes, Route, Link } from "react-router-dom"
 import PrivacyPage from "./pages/PrivacyPage"
 import TermsPage from "./pages/TermsPage"
 
-// Image paths for the carousel
-const carouselImages = ["/src/assets/rain.png", "/src/assets/htp.jpg", "/src/assets/kinetic.png"]
+// Import images directly
+import rainImage from "./assets/rain.png"
+import htpImage from "./assets/htp.jpg"
+import kineticImage from "./assets/kinetic.png"
+
+// Use imported images in the array
+const carouselImages = [rainImage, htpImage, kineticImage]
 
 // Extracted Home Page Content Component
 function HomePage() {
@@ -51,12 +56,14 @@ function HomePage() {
               </span>
             </h1>
             <p className="text-xl text-gray-700 mb-8 max-w-lg">
-              PsychDraw is a mobile app designed for clinicians. Capture client drawings (HTP, DAP, etc.), get
+              PsychDraw is a mobile app designed for clinicians. Capture client drawings, get
               AI-driven insights using advanced AI, generate reports, and track progress over time.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button className="bg-gradient-to-r from-fuchsia-600 to-purple-600 hover:from-fuchsia-700 hover:to-purple-700 text-white text-lg px-8 py-6 font-semibold shadow-lg">
-                Analyze a Drawing <ArrowRight className="ml-2 h-5 w-5" />
+              <Button asChild className="bg-gradient-to-r from-fuchsia-600 to-purple-600 hover:from-fuchsia-700 hover:to-purple-700 text-white text-lg px-8 py-6 font-semibold shadow-lg">
+                <a href="https://app.psychdraw.com">
+                  Analyze a Drawing <ArrowRight className="ml-2 h-5 w-5" />
+                </a>
               </Button>
               <Button
                 variant="outline"
@@ -85,7 +92,7 @@ function HomePage() {
                   {/* Previous Button */}
                   <button
                     onClick={goToPrevious}
-                    className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-black/30 text-white p-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-black/50 focus:outline-none focus:ring-2 focus:ring-white"
+                    className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-black/40 text-white p-1 rounded-full transition-all duration-200 ease-in-out hover:bg-black/60 active:bg-black/70 active:scale-95 focus:outline-none focus:ring-2 focus:ring-white"
                     aria-label="Previous image"
                   >
                     <ChevronLeft className="h-6 w-6" />
@@ -94,7 +101,7 @@ function HomePage() {
                   {/* Next Button */}
                   <button
                     onClick={goToNext}
-                    className="absolute top-1/2 right-2 transform -translate-y-1/2 bg-black/30 text-white p-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-black/50 focus:outline-none focus:ring-2 focus:ring-white"
+                    className="absolute top-1/2 right-2 transform -translate-y-1/2 bg-black/40 text-white p-1 rounded-full transition-all duration-200 ease-in-out hover:bg-black/60 active:bg-black/70 active:scale-95 focus:outline-none focus:ring-2 focus:ring-white"
                     aria-label="Next image"
                   >
                     <ChevronRight className="h-6 w-6" />
@@ -414,11 +421,6 @@ function HomePage() {
           </div>
         </div>
 
-        <div className="mt-12 text-center">
-          <p className="text-gray-600">
-            All plans include a <span className="font-medium">7-day free trial</span>. No credit card required initially.
-          </p>
-        </div>
       </section>
 
       {/* CTA Section */}
@@ -427,11 +429,13 @@ function HomePage() {
         <div className="container mx-auto px-4 relative z-10 text-center">
           <h2 className="text-4xl font-bold text-white mb-6">Ready to Enhance Your Practice?</h2>
           <p className="text-xl text-white/90 max-w-2xl mx-auto mb-10">
-            Join the waitlist for PsychDraw and be among the first to streamline drawing analysis with AI.
+            Start streamlining your drawing analysis today. Get AI-powered insights and enhance your clinical workflow.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-white text-fuchsia-600 hover:bg-gray-100 text-lg px-8 py-6">
-              Join Waitlist
+            <Button asChild size="lg" className="bg-white text-fuchsia-600 hover:bg-gray-100 text-lg px-8 py-6">
+              <a href="https://app.psychdraw.com">
+                Get Started Today
+              </a>
             </Button>
             <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 text-lg px-8 py-6">
               Learn More
@@ -474,9 +478,11 @@ export default function App() {
             Pricing
           </a>
         </div>
-        <Button variant="outline" className="border-fuchsia-600 text-fuchsia-600 hover:bg-fuchsia-50">
-          Login / Sign Up
-        </Button> {/* Changed Button Text */}
+        <Button asChild variant="outline" className="border-fuchsia-600 text-fuchsia-600 hover:bg-fuchsia-50">
+          <a href="https://app.psychdraw.com">
+            Login / Sign Up
+          </a>
+        </Button>
       </nav>
 
       {/* Main Content Area */}
